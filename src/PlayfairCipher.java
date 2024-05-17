@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class PlayfairCipher {
     private static final char[] ALPHABET_LETTERS = new char[] {
             'a', 'b', 'c', 'd', 'e',
@@ -11,7 +7,7 @@ public class PlayfairCipher {
             'v', 'w', 'x', 'y', 'z'
     };
 
-    private char[][] key = new char[5][5];
+    private final char[][] key = new char[5][5];
 
     public PlayfairCipher(String keyWord) {
         setKey(keyWord);
