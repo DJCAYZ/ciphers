@@ -1,18 +1,14 @@
 public class Ciphers {
     public static void main(String[] args) {
-        PolybiusSquareCipher psCipher = new PolybiusSquareCipher();
-        CaesarCipher cCipher = new CaesarCipher(5);
-        PlayfairCipher pCipher = new PlayfairCipher("larkspur");
+        PlayfairCipher pCipher = new PlayfairCipher("primrose");
 
-        String word = "geeksforgeeks";
-        String encrypted;
+        String plaintext = "hike the foothills";
+        String encrypted = "ILMILDRKRY";
 
-        encrypted = psCipher.encrypt(word);
+        System.out.println(plaintext + " encrypted is: " + pCipher.encrypt(plaintext));
 
-        System.out.println("'" + word + "' encrypted is: " + encrypted);
-        System.out.println("decrypted: " + psCipher.decrypt(encrypted));
+        pCipher.setKey("larkspur");
 
-
-
+        System.out.println(encrypted + " decrypted is: " + pCipher.decrypt(encrypted));
     }
 }
