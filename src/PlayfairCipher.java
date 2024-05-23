@@ -152,6 +152,11 @@ public class PlayfairCipher {
         while (i < text.length()) {
             char firstLetter = text.charAt(i);
 
+            if (firstLetter < 'a' || firstLetter > 'z') {
+                i++;
+                continue;
+            }
+
             if (firstLetter == 'j') {
                 firstLetter = 'i';
             }
@@ -162,6 +167,11 @@ public class PlayfairCipher {
             }
 
             char secondLetter = text.charAt(i + 1);
+
+            if (secondLetter < 'a' || secondLetter > 'z') {
+                i++;
+                secondLetter = text.charAt(i + 1);
+            }
 
             if (firstLetter == secondLetter) {
                 secondLetter = bogusChar;
