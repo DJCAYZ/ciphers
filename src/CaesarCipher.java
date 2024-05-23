@@ -1,8 +1,20 @@
 public class CaesarCipher {
     private int shift;
 
+    public CaesarCipher() {
+        setShift(5);
+    }
+
     public CaesarCipher(int shift) {
-        this.shift = shift;
+        setShift(shift);
+    }
+
+    public void setShift(int newShift) {
+        this.shift = newShift;
+    }
+
+    public int getShift() {
+        return shift;
     }
 
     public String encrypt(String plaintext) {
