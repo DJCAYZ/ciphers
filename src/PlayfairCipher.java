@@ -11,6 +11,10 @@ public class PlayfairCipher {
 
     private final char[][] key = new char[5][5];
 
+    public PlayfairCipher() {
+        setKey("");
+    }
+
     public PlayfairCipher(String keyWord) {
         setKey(keyWord);
     }
@@ -72,6 +76,15 @@ public class PlayfairCipher {
 
         for (int i = 0; i < inlineKey.length; i++) {
             key[i / 5][i % 5] = inlineKey[i];
+        }
+    }
+
+    public void printKey() {
+        for (int row = 0; row < key.length; row++) {
+            for (int col = 0; col < key[row].length; col++) {
+                System.out.print(" " + Character.toUpperCase(key[row][col]));
+            }
+            System.out.println();
         }
     }
 

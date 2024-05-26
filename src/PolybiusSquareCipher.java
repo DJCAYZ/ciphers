@@ -46,6 +46,17 @@ public class PolybiusSquareCipher {
         return plaintext;
     }
 
+    public void printKey() {
+        System.out.println("  1 2 3 4 5");
+        for (int row = 0; row < KEY.length; row++) {
+            System.out.print(row);
+            for (int col = 0; col < KEY[row].length; col++) {
+                System.out.print(" " + Character.toUpperCase(KEY[row][col]));
+            }
+            System.out.println();
+        }
+    }
+
     private String getLetterRowAndColumn(char letter) {
 
         // Iterate through every row of KEY array
