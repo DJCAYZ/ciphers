@@ -25,6 +25,23 @@ public class PositionallyShiftedCipher {
         return encryptedText;
     }
 
+    private char getShiftedLetter(char letter, int position) {
+        // we first subtract 96 to the letter to get its numerical value
+        // from 1 to 26
+        // then we add the position of it in the string (not the index, so it starts with 1)
+        int shifted = (letter - 96) + (position % 26);
+
+        // if the shifted value is greater than 26
+        if (shifted > 26) {
+            // subtract 26 to loop back around to the start of the alphabet
+            shifted -= 26;
+        }
+
+        // return the shifted value as a char by first adding 96 to it to make it a valid ASCII value
+        // then type cast it to a char
+        return (char) (shifted + 96);
+    }
+
     public String decrypt(String encryptedText) {
         // Same thing as the encrypt() method
         String cleanEncryptedText = encryptedText.trim().toLowerCase();
@@ -45,26 +62,9 @@ public class PositionallyShiftedCipher {
         return plaintext;
     }
 
-    private char getShiftedLetter(char letter, int position) {
-        // we first subtract 96 to the letter to get its numerical value
-        // from 1 to 26
-        // then we add the position of it in the string (not the index, so it starts with 1)
-        int shifted = (letter - 96) + position;
-
-        // if the shifted value is greater than 26
-        if (shifted > 26) {
-            // subtract 26 to loop back around to the start of the alphabet
-            shifted -= 26;
-        }
-
-        // return the shifted value as a char by first adding 96 to it to make it a valid ASCII value
-        // then type cast it to a char
-        return (char) (shifted + 96);
-    }
-
     private char getUnshiftedLetter(char letter, int position) {
         // same thing as in getShiftedLetter, but we instead subtract the position instead of adding it
-        int unshifted = (letter - 96) - position;
+        int unshifted = (letter - 96) - (position % 26);
 
         // if the unshifted value is less than 1
         if (unshifted < 1) {

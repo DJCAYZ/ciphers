@@ -44,6 +44,22 @@ public class CaesarCipher {
         return encrypted;
     }
 
+    private char shiftLetter(char letter) {
+        // This makes use of the fact that Java chars are stored as integers internally
+        // So by adding a character and an integer, you get the sum of the ASCII value
+        // of the character and the integer
+        int shifted = letter + shift;
+
+        // If the computed shifted value is greater than the internal value of the 'z' character,
+        // decrement it by 26 to loop back to the character 'a'
+        if (shifted > 'z') {
+            shifted -= 26;
+        }
+
+        // Lastly, return the shifted character by type casting it back as a char
+        return (char) shifted;
+    }
+
     public String decrypt(String encryptedText) {
         // Convert the given encrypted text to lowercase
         String lowerEncrypted = encryptedText.toLowerCase();
@@ -66,22 +82,6 @@ public class CaesarCipher {
         // Once it is done iterating through every character,
         // return the plaintext
         return plaintext;
-    }
-
-    private char shiftLetter(char letter) {
-        // This makes use of the fact that Java chars are stored as integers internally
-        // So by adding a character and an integer, you get the sum of the ASCII value
-        // of the character and the integer
-        int shifted = letter + shift;
-
-        // If the computed shifted value is greater than the internal value of the 'z' character,
-        // decrement it by 26 to loop back to the character 'a'
-        if (shifted > 'z') {
-            shifted -= 26;
-        }
-
-        // Lastly, return the shifted character by type casting it back as a char
-        return (char) shifted;
     }
 
     private char unshiftLetter(char letter) {
