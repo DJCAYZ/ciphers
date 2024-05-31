@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class PositionallyShiftedCipher {
 
     public String encrypt(String plaintext) {
